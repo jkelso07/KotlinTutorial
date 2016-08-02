@@ -20,11 +20,6 @@ fun Customer.isFrom(city: City): Boolean {
     return if(this.city == city) true else false
 }
 
-fun Customer.isFromCity(city: City): (Customer) -> Boolean {
-    // Return true if the customer is from the given city
-    return { it.city == city }
-}
-
 fun Shop.checkAllCustomersAreFrom(city: City): Boolean {
     // Return true if all customers are from the given city
     val isFrom: (Customer) -> Boolean = { it.city == city }
