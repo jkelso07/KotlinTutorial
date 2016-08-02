@@ -55,7 +55,7 @@ val shop = shop("test shop") {
         order(reSharper)
     }
     customer(asuka, Tokyo) {
-        order(idea)
+        order(isDelivered = false, products = idea)
     }
     customer(riku, Tokyo) {
         order(phpStorm, phpStorm)
