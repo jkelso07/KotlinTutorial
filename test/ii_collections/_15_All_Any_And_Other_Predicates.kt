@@ -5,6 +5,10 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class _15_All_Any_And_Other_Predicates {
+    @Test fun testOutputExample2(){
+        example2(arrayListOf(0,-5,2,10,0))
+        assertTrue(true)
+    }
     @Test fun testCustomerIsFromCity() {
         assertTrue(customers[lucas]!!.isFrom(Canberra))
         assertFalse(customers[lucas]!!.isFrom(Budapest))
