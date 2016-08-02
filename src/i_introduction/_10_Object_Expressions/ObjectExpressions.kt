@@ -1,5 +1,6 @@
 package i_introduction._10_Object_Expressions
 
+import iii_conventions._25_Comparison
 import util.TODO
 import util.doc10
 import java.util.*
@@ -16,8 +17,21 @@ fun todoTask10(): Nothing = TODO(
     documentation = doc10()
 )
 
+class ImpComparator: Comparator<Int>{
+    override fun compare(o1: Int, o2: Int): Int {
+        if(o1<o2){
+            return 1
+        } else if(o2<o1){
+            return -1
+        } else{
+            return 0
+        }
+    }
+}
+
 fun task10(): List<Int> {
     val arrayList = arrayListOf(1, 5, 2)
-    Collections.sort(arrayList, todoTask10())
+    val comparator: Comparator<Int> = ImpComparator()
+    Collections.sort(arrayList, comparator)
     return arrayList
 }
