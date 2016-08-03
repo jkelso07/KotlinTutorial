@@ -11,6 +11,6 @@ class _21_Partition {
         assertEquals(example8Before(), example8After())
     }
     @Test fun testGetCustomersWhoHaveMoreUndeliveredOrdersThanDelivered() {
-        assertEquals(setOf(customers[reka], customers[lucas]), shop.getCustomersWithMoreUndeliveredOrdersThanDelivered())
+        assertEquals(setOf(customers[reka]), shop.getCustomersWithMoreUndeliveredOrdersThanDelivered())
     }
 }
