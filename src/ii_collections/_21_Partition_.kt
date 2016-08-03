@@ -19,7 +19,7 @@ fun example8After(): Pair<List<Int>, List<Int>> {
 
 fun Shop.getCustomersWithMoreUndeliveredOrdersThanDelivered(): Set<Customer> {
     // Return customers who have more undelivered orders than delivered
-    val orderDelivered: (Order) -> Boolean{ it.isDelivered }
+    val orderDelivered: (Order) -> Boolean = { it.isDelivered }
     return customers.filter {
         val (isDelivered, isNotDelivered) = it.orders.partition { it.isDelivered }
         return true
