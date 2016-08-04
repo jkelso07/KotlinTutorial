@@ -17,7 +17,9 @@ operator fun DateRange.contains(date: MyDate): Boolean {
     return if(date>this.start && date<=this.endInclusive) true else false
 }
 
-operator fun MyDate.rangeTo(other: MyDate): DateRange = todoTask27()
+operator fun MyDate.rangeTo(other: MyDate): DateRange {
+    return DateRange(this, other)
+}
 
 enum class TimeInterval {
     DAY,
