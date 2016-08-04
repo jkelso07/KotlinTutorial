@@ -13,6 +13,10 @@ data class MyDate(val year: Int, val month: Int, val dayOfMonth: Int): Comparabl
     }
 }
 
+operator fun DateRange.contains(date: MyDate): Boolean {
+    return if(date>this.start && date<=this.endInclusive) true else false
+}
+
 operator fun MyDate.rangeTo(other: MyDate): DateRange = todoTask27()
 
 enum class TimeInterval {
