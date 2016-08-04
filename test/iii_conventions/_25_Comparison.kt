@@ -21,5 +21,14 @@ class _25_Comparison {
         assertTrue("The date ${first.s} should be after ${second.s}", first > second)
     }
 
-    operator fun MyDate.compareTo(other: MyDate): Int = todoTask25()
+    operator fun MyDate.compareTo(other: MyDate): Int {
+        if(year > other.year ||
+                (year == other.year && (month > other.month ||
+                        (month == other.month && dayOfMonth > other.dayOfMonth)))) {
+            return 1
+        }else if(year == other.year && month == other.month && dayOfMonth == other.dayOfMonth){
+            return 0
+        }
+        return -1
+    }
 }
