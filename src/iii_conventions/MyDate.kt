@@ -54,12 +54,12 @@ operator fun DateRange.contains(date: MyDate): Boolean {
 }
 
 class DateRangeIterator(val dateRange: DateRange) : Iterator<MyDate> {
-    val currentDate: MyDate = dateRange.start
-    override fun hasNext(): Boolean {
-        return currentDate <= dateRange.endInclusive
-    }
+    var currentDate: MyDate = dateRange.start
     override fun next(): MyDate {
-        currentDate == currentDate.nextDay()
-        return currentDate
+        val result = currentDate
+        currentDate = currentDate.addTimeIntervals(TimeInterval.DAY, 1)
+        return result
     }
+    override fun hasNext(): Boolean = currentDate <= dateRange.endInclusive
+
 }
