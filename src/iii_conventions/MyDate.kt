@@ -13,13 +13,31 @@ data class MyDate(val year: Int, val month: Int, val dayOfMonth: Int): Comparabl
     }
 }
 
-operator fun DateRange.contains(date: MyDate): Boolean {
-    return if(date>this.start && date<=this.endInclusive) true else false
-}
-
 operator fun MyDate.rangeTo(other: MyDate): DateRange {
     return DateRange(this, other)
 }
+
+operator fun MyDate.plus(timeInterval: TimeInterval) {
+    if(timeInterval == TimeInterval.YEAR){
+        this.nextYear()
+    }else if(timeInterval == TimeInterval.WEEK){
+        this.nextWeek()
+    }else{
+        this.nextDay()
+    }
+}
+
+operator fun MyDate.plus(repeatedTimeInterval: RepeatedTimeInterval) {
+    if(timeInterval == TimeInterval.YEAR){
+        this.nextYear()
+    }else if(timeInterval == TimeInterval.WEEK){
+        this.nextWeek()
+    }else{
+        this.nextDay()
+    }
+}
+
+class RepeatedTimeInterval(val timeInterval: TimeInterval, val numOfIntervals: Int)
 
 enum class TimeInterval {
     DAY,
@@ -27,10 +45,20 @@ enum class TimeInterval {
     YEAR
 }
 
-class DateRange(val start: MyDate, val endInclusive: MyDate): Iterable<MyDate> {
+fun TimeInterval.times(times: Int){
+    for(i in 1..times){
+        this.plus()
+    }
+}
+
+class DateRange(override val start: MyDate, override val endInclusive: MyDate): Iterable<MyDate> {
     override fun iterator(): Iterator<MyDate> {
         return DateRangeIterator(this)
     }
+}
+
+operator fun DateRange.contains(date: MyDate): Boolean {
+    return if(date>this.start && date<=this.endInclusive) true else false
 }
 
 class DateRangeIterator(val dateRange: DateRange) : Iterator<MyDate> {
