@@ -28,13 +28,7 @@ operator fun MyDate.plus(timeInterval: TimeInterval) {
 }
 
 operator fun MyDate.plus(repeatedTimeInterval: RepeatedTimeInterval) {
-    if(timeInterval == TimeInterval.YEAR){
-        this.nextYear()
-    }else if(timeInterval == TimeInterval.WEEK){
-        this.nextWeek()
-    }else{
-        this.nextDay()
-    }
+
 }
 
 class RepeatedTimeInterval(val timeInterval: TimeInterval, val numOfIntervals: Int)
@@ -46,12 +40,10 @@ enum class TimeInterval {
 }
 
 fun TimeInterval.times(times: Int){
-    for(i in 1..times){
-        this.plus()
-    }
+
 }
 
-class DateRange(override val start: MyDate, override val endInclusive: MyDate): Iterable<MyDate> {
+class DateRange(val start: MyDate, val endInclusive: MyDate): Iterable<MyDate> {
     override fun iterator(): Iterator<MyDate> {
         return DateRangeIterator(this)
     }
